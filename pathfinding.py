@@ -3,16 +3,21 @@ from grid_world import get_neighbor
 def bfs(grid, start, goal):
     queue = deque()
     queue.append(start)
-
     visited = set()
     visited.add(start)
     parent = {}
     parent[start] = None
+    nodes_explored = 0
     while queue:
         current = queue.popleft()
+        nodes_explored += 1
         print(current)
         if current == goal:
-            return reconstruct_path(parent, start,goal)
+            path = reconstruct_path(parent, start, goal)
+            return { 
+                "path" : path,
+                "nodes explored":nodes_explored
+            }
     
         row, col = current
         neighbor = get_neighbor(grid, row, col)
@@ -22,7 +27,10 @@ def bfs(grid, start, goal):
             visited.add(neigh)
             parent[neigh] = current
             queue.append(neigh)
-    return None
+    return {
+        "path" : None,
+        "nodes explored": nodes_explored
+    }
 
 def reconstruct_path(parent, start, goal):
     path = []
