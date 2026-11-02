@@ -11,7 +11,7 @@ def bfs(grid, start, goal):
     while queue:
         current = queue.popleft()
         nodes_explored += 1
-        print(current)
+
         if current == goal:
             path = reconstruct_path(parent, start, goal)
             return { 
