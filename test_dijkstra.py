@@ -5,7 +5,6 @@ grid = [
     [0, 0, 0],
     [0, 0, 0]
 ]
-
 # Test 1: Normal shortest path
 result = dijkstra(grid, (0, 0), (2, 2))
 
